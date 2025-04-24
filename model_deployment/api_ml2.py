@@ -86,8 +86,6 @@ print("RMSE:", rmse)
 
 joblib.dump(xg, 'randomforestMl', compress = 3)
 
-!pip install flask-restx
-
 from flask import Flask, request, jsonify
 from flask_restx import Api, Resource, fields
 
