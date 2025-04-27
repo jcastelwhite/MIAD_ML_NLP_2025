@@ -113,23 +113,10 @@ x = dataTraining.drop(columns=['popularity'])
 y = dataTraining['popularity']
 x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=123)
 
-"""import numpy as np
-from xgboost import XGBRegressor
-from sklearn.ensemble import ExtraTreesRegressor, RandomForestRegressor, VotingRegressor
-from sklearn.model_selection import GridSearchCV, train_test_split
-from sklearn.metrics import mean_squared_error
-
-VR1 = VotingRegressor(estimators=[('xg', XGBRegressor()), ('rf', RandomForestRegressor()), ('ex', ExtraTreesRegressor())],)
-VR1  = VR1.fit(x_train, y_train)
-y_pred = VR1.predict(x_test)
-mse = mean_squared_error(y_test, y_pred)
-rmse = np.sqrt(mse)
-rmse"""
-
 import xgboost as xgb
 from sklearn.metrics import mean_squared_error
 
-xg = xgb.XGBRegressor(n_estimators=125, random_state=123, gamma =0, learning_rate =0.1, max_depth =18, colsample_bytree = 0.8)
+xg = xgb.XGBRegressor()
 xg.fit(x_train, y_train)
 
 y_pred = xg.predict(x_test)
